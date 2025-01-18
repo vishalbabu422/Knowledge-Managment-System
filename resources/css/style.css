@@ -77,12 +77,6 @@ body {
   outline: 0 !important;
 }
 
-hr {
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
 
 h1,
 h2,
@@ -11718,6 +11712,7 @@ body {
   position: relative;
   z-index: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 body:after {
@@ -11726,10 +11721,13 @@ body:after {
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 0;
   content: '';
   background: #000;
   opacity: .3;
   z-index: -1;
+  width: 100%; /* 100% of the body's width */
+  height: 100%; /* 100% of the body's height */
 }
 
 a {
