@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name', 'KMS') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <link rel="stylesheet" href="{{Vite::asset('resources/css/feather/feather.css')}}">
+    <link rel="stylesheet" href="{{Vite::asset('resources/css/materialdesignicons.min.css')}}">
+    <link rel="stylesheet" href="{{Vite::asset('resources/css/vertical-layout-light/style.css')}}" />
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+    <link rel="shortcut icon" href="{{Vite::asset('resources/images/search.png')}}" />
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <x-app-header :name="auth()->user()['name']" :email="auth()->user()['email']" />
+        <div class="container-fluid page-body-wrapper">
+            <x-app-sidebar />
         </div>
-    </body>
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="home-tab">
+                            {{$slot}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="{{Vite::asset('resources/js/vendor.bundle.base.js')}}"></script>
+<script src="{{Vite::asset('resources/js/template.js')}}"></script>
+<script src="{{Vite::asset('resources/js/dashboard.js')}}"></script>
+
 </html>
