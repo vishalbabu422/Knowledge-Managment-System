@@ -9,7 +9,8 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css','resources/css/materialdesignicons.min.css','resources/css/vertical-layout-light/style.css'])
+    @vite(['resources/css/feather/feather.css','resources/css/materialdesignicons.min.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css'])
+
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/search.png')}}" />
 </head>
 
