@@ -14,10 +14,10 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Document</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('File.index') }}">Document</a></li>
                 </ul>
             </div>
         </li>
-        
+
     </ul>
 </nav>
