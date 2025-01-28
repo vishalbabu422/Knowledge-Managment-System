@@ -2319,7 +2319,7 @@ pre code {
 
 .form-control:disabled,
 .form-control[readonly] {
-  background-color: #e9ecef;
+  background-color: #ffffff !important;
   opacity: 1;
 }
 
@@ -11996,4 +11996,8 @@ textarea.form-control {
   border: 1px solid transparent;
   background: #fbceb5;
   color: #fff;
+}
+
+#formFile{
+  background-color: #fff !important;
 }
