@@ -65,6 +65,7 @@ body {
 }
 .form-upload .steps {
 	margin-bottom: 33px;
+	margin-left: 4rem !important;
 }
 .form-upload .steps ul {
     display: flex;
