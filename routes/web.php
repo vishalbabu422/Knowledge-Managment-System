@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/File', [FileController::class, 'index'])->name('File.index');
+    Route::post('/File',[FileController::class,'addFile'])->name('File.add');
 });
 
 require __DIR__ . '/auth.php';

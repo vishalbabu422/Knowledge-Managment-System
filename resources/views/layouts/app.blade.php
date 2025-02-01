@@ -9,10 +9,18 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css','resources/css/materialdesignicons.min.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/form-style.css'])
+    @vite(['resources/css/feather/feather.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/toastr.min.css'])
 
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/search.png')}}" />
 </head>
+<script src="{{Vite::asset('resources/js/jquery.min.js')}}"></script>
+<script src="{{Vite::asset('resources/js/vendor.bundle.base.js')}}"></script>
+<script src="{{Vite::asset('resources/js/template.js')}}"></script>
+<script src="{{Vite::asset('resources/js/dashboard.js')}}"></script>
+<script src="{{Vite::asset('resources/js/jquery.validate.min.js')}}"></script>
+<script src="{{Vite::asset('resources/js/toastr.min.js')}}"></script>
+
+
 
 <body>
     <div class="container-scroller">
@@ -51,12 +59,9 @@
     <!-- container-scroller -->
 </body>
 
-<script src="{{Vite::asset('resources/js/vendor.bundle.base.js')}}"></script>
-<script src="{{Vite::asset('resources/js/template.js')}}"></script>
-<script src="{{Vite::asset('resources/js/dashboard.js')}}"></script>
-<script src="{{Vite::asset('resources/js/jquery.steps.js')}}"></script>
-<script src="{{Vite::asset('resources/js/jquery-ui.min.js')}}"></script>
-<script src="{{Vite::asset('resources/js/main.js')}}"></script>
+
+
+
 
 
 </html>

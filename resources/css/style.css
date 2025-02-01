@@ -11726,8 +11726,10 @@ body:after {
   background: #000;
   opacity: .3;
   z-index: -1;
-  width: 100%; /* 100% of the body's width */
-  height: 100%; /* 100% of the body's height */
+  width: 100%;
+  /* 100% of the body's width */
+  height: 100%;
+  /* 100% of the body's height */
 }
 
 a {
@@ -11998,6 +12000,3 @@ textarea.form-control {
   color: #fff;
 }
 
-#formFile{
-  background-color: #fff !important;
-}
