@@ -9,8 +9,9 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/toastr.min.css','resources/css/dataTables.dataTables.min.css','bootstrap.min.css'])
+    @vite(['resources/css/feather/feather.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/toastr.min.css','resources/css/dataTables.dataTables.min.css','resources/css/bootstrap.min.css','resources/css/search-main.css'])
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/search.png')}}" />
 
     <script src="{{Vite::asset('resources/js/jquery.min.js')}}"></script>

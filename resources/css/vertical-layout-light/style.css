@@ -32624,6 +32624,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown i {
+  font-size: 25px;
   margin-right: 0;
   vertical-align: middle;
 }
