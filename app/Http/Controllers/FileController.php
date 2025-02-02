@@ -56,4 +56,17 @@ class FileController extends Controller
             return back();
         }
     }
+
+    public function download($filename)
+    {
+        $filePath = storage_path('app/public/attachments/' . $filename);
+
+        // Check if the file exists
+        if (file_exists($filePath)) {
+            // Return the file as a download response
+            return response()->download($filePath);
+        } else {
+            return abort(404); // File not found
+        }
+    }
 }

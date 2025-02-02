@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('content_catalogue', function (Blueprint $table) {
             $table->id();
-            $table->string('title',100);
-            $table->string('description',500);
-            $table->string('path',500);
+            $table->string('title', 100);
+            $table->string('description', 500);
+            $table->string('path', 500);
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }

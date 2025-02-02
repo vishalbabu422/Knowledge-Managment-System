@@ -9,16 +9,20 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/toastr.min.css'])
+    @vite(['resources/css/feather/feather.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/toastr.min.css','resources/css/dataTables.dataTables.min.css','bootstrap.min.css'])
 
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/search.png')}}" />
+
+    <script src="{{Vite::asset('resources/js/jquery.min.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/vendor.bundle.base.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/template.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/dashboard.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/jquery.validate.min.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/toastr.min.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/dataTables.min.js')}}"></script>
+    <script src="{{Vite::asset('resources/js/bootstrap.bundle.min.js')}}"></script>
 </head>
-<script src="{{Vite::asset('resources/js/jquery.min.js')}}"></script>
-<script src="{{Vite::asset('resources/js/vendor.bundle.base.js')}}"></script>
-<script src="{{Vite::asset('resources/js/template.js')}}"></script>
-<script src="{{Vite::asset('resources/js/dashboard.js')}}"></script>
-<script src="{{Vite::asset('resources/js/jquery.validate.min.js')}}"></script>
-<script src="{{Vite::asset('resources/js/toastr.min.js')}}"></script>
+
 
 
 
@@ -58,10 +62,13 @@
     </div>
     <!-- container-scroller -->
 </body>
+<script>
 
+    $(document).ready(function () {
+        $('.table').DataTable();
+    });
 
-
-
+</script>
 
 
 </html>
