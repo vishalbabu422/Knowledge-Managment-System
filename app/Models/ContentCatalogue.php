@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContentCatalogue extends Model
 {
-    protected $table="content_catalogue";
+    protected $table = "content_catalogue";
 
     protected $fillable = [
-        'title','description','path'
+        'title',
+        'description',
+        'path'
     ];
 }

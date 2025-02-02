@@ -35028,6 +35028,11 @@ div.tagsinput span.tag a {
 .upload-info {
   color: red;
   font-size: 14px;
+  padding-top: 5vh;
+}
+
+.edit-download {
+  font-size: 20px;
 }
 
 label.error {
