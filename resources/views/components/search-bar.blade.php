@@ -11,7 +11,7 @@
                             </path>
                         </svg>
                     </div>
-                    <input id="search" type="text" placeholder="Search..." />
+                    <input id="search" class="search-input" type="text" placeholder="Search..." />
                     <div class="result-count">
                         <span>108 </span>results
                     </div>
