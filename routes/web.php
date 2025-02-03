@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\DirectoryController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,6 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/Download/{filename}', [FileController::class, 'download'])->name('File.download');
 
     Route::get('/Directory', [DirectoryController::class, 'index'])->name('directory.index');
+
+    Route::get('/Search/Listings', [SearchController::class, 'autoComplete'])->name('search.autocomplete');
 });
 
 require __DIR__ . '/auth.php';

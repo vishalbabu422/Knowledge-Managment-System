@@ -920,7 +920,7 @@ legend {
     margin-bottom: 5px;
     box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
     width: 165%;
-    margin-left: 105px;
+    margin-left: 71px;
 }
 
 .s007 form .inner-form .basic-search .input-field {
@@ -941,13 +941,13 @@ legend {
     justify-content: flex-end;
     -ms-flex-align: center;
     align-items: center;
-    width: 60px;
+    width: 40px;
     height: 100%;
 }
 
 .s007 form .inner-form .basic-search .input-field .icon-wrap svg {
-    width: 34px;
-    height: 34px;
+    width: 20px;
+    height: 20px;
     fill: #ccc;
 }
 
@@ -1204,4 +1204,8 @@ legend {
 .search-input {
     height: 50px !important;
     border-radius: 25px !important;
+}
+
+.ui-autocomplete {
+  width: 720px !important; /* Set the desired width */
 }

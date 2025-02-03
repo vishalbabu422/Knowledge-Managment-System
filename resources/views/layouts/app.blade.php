@@ -9,19 +9,20 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css','resources/css/vertical-layout-light/style.css','resources/css/mdi/css/materialdesignicons.min.css','resources/css/toastr.min.css','resources/css/dataTables.dataTables.min.css','resources/css/bootstrap.min.css','resources/css/search-main.css'])
+    @vite(['resources/css/feather/feather.css', 'resources/css/vertical-layout-light/style.css', 'resources/css/mdi/css/materialdesignicons.min.css', 'resources/css/toastr.min.css', 'resources/css/dataTables.dataTables.min.css', 'resources/css/bootstrap.min.css', 'resources/css/search-main.css', 'resources/css/jquery-ui.min.css'])
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
-    <link rel="shortcut icon" href="{{Vite::asset('resources/images/search.png')}}" />
+    <link rel="shortcut icon" href="{{ Vite::asset('resources/images/search.png') }}" />
 
-    <script src="{{Vite::asset('resources/js/jquery.min.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/vendor.bundle.base.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/template.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/dashboard.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/jquery.validate.min.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/toastr.min.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/dataTables.min.js')}}"></script>
-    <script src="{{Vite::asset('resources/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ Vite::asset('resources/js/jquery.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/template.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/dashboard.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/toastr.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/dataTables.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/jquery-ui.min.js') }}"></script>
 </head>
 
 
@@ -44,7 +45,7 @@
                                     <div class="tab-pane fade show active" id="overview" role="tabpanel"
                                         aria-labelledby="overview">
                                         <div class="row">
-                                            {{$slot}}
+                                            {{ $slot }}
                                         </div>
                                     </div>
                                 </div>
@@ -64,11 +65,40 @@
     <!-- container-scroller -->
 </body>
 <script>
-
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.table').DataTable();
     });
 
+    $('#search').autocomplete({
+        width: 50,
+        source: function(request, response) {
+            $.ajax({
+                url: '{{ route('search.autocomplete') }}',
+                data: {
+                    term: request.term
+                },
+                success: function(data) {
+                    response($.map(data, function(item) {
+                        return {
+                            label: item.title,
+                            value: item.title
+                        };
+                    }));
+                }
+            });
+        },
+        minLength: 2,
+        open: function() {
+            var autocompleteWidth = $(this).outerWidth();
+            var inputOffset = $(this).offset().left;
+
+            // Adjust the dropdown position
+            $(this).autocomplete("widget").css({
+                'width': autocompleteWidth, // Ensure dropdown width is the same as input
+                'left': inputOffset + 20, // Move the dropdown 20px to the left
+            });
+        }
+    });
 </script>
 
 
