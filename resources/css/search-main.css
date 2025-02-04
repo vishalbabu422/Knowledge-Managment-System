@@ -1204,8 +1204,13 @@ legend {
 .search-input {
     height: 50px !important;
     border-radius: 25px !important;
+    z-index: 1 !important ;
 }
 
 .ui-autocomplete {
-  width: 720px !important; /* Set the desired width */
+    width: 720px !important; /* Set the desired width */
+    z-index: 9999 !important;
+    position: absolute !important;
+    top: 88px !important;
+    left: 689.523px !important;
 }
