@@ -1208,7 +1208,7 @@ legend {
 }
 
 .ui-autocomplete {
-    width: 720px !important; /* Set the desired width */
+    width: 720px !important;
     z-index: 9999 !important;
     position: absolute !important;
     top: 88px !important;

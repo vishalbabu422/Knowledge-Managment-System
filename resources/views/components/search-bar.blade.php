@@ -1,5 +1,6 @@
 <div class="s007">
     <form>
+        @csrf
         <div class="inner-form">
             <div class="basic-search">
                 <div class="input-field">

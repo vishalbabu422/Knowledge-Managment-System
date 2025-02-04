@@ -66,40 +66,59 @@
 </body>
 <script>
     $(document).ready(function() {
+        // Initialize DataTables
         $('.table').DataTable();
-    });
 
-    $('#search').autocomplete({
-        width: 50,
-        source: function(request, response) {
-            $.ajax({
-                url: '{{ route('search.autocomplete') }}',
-                data: {
-                    term: request.term
-                },
-                success: function(data) {
-                    response($.map(data, function(item) {
-                        return {
-                            label: item.title,
-                            value: item.title
-                        };
-                    }));
-                }
-            });
-        },
-        minLength: 2,
-        open: function() {
-            var autocompleteWidth = $(this).outerWidth();
-            var inputOffset = $(this).offset().left;
+        // Autocomplete setup
+        $('#search').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: '{{ route('search.autocomplete') }}', // Adjust the route as per your requirement
+                    data: {
+                        term: request.term // Send search term to server
+                    },
+                    success: function(data) {
+                        // Populate autocomplete suggestions
+                        response($.map(data, function(item) {
+                            return {
+                                label: item
+                                    .title, // Display text in the autocomplete dropdown
+                                value: item
+                                    .title // The value to be set in the input when an item is selected
+                            };
+                        }));
+                    }
+                });
+            },
+            minLength: 2, // Minimum characters to trigger the autocomplete
+        });
 
-            // Adjust the dropdown position
-            $(this).autocomplete("widget").css({
-                'width': autocompleteWidth, // Ensure dropdown width is the same as input
-                'left': inputOffset + 20, // Move the dropdown 20px to the left
-            });
-        }
+        // Handle form submission on Enter key press
+        $('#search').on('keydown', function(event) {
+            if (event.key === 'Enter') {
+                console.log(event.key)
+                event.preventDefault();
+                
+                $.ajax({
+                    url: '{{ route('search.selectedItem') }}', // Replace with the route to handle the selected item
+                    method: 'POST',
+                    data: {
+                        item: selectedItem,
+                        _token: '{{ csrf_token() }}' // CSRF token for security in Laravel
+                    },
+                    success: function(response) {
+                        console.log("Item selected:", response);
+                        alert('Selected item: ' + response.message);
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
+            }
+        });
     });
 </script>
+
 
 
 </html>
