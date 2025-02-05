@@ -21,12 +21,19 @@ class SearchController extends Controller
 
     public function basicSearch(Request $request)
     {
-        $item = $request->input('item');
+        $item = $request->input('term'); // Get the search term from the request
 
-        $searchResults = ContentCatalogue::where('title', 'like', '%' . $item . '%')->get();
+        // Perform the search query with pagination
+        $searchResults = ContentCatalogue::where('title', 'like', '%' . $item . '%')->paginate(1); // Adjust pagination size
 
-        $view = view('search.basicsearch', compact('searchResults'))->render();
+        if ($request->ajax()) {
+            // Render the content part (search results) alone
+            $view = view('search.basicsearch', compact('searchResults'))->render();
 
-        return response()->json($view); 
+            return response()->json($view);
+        }
+
+        // If it's not an AJAX request, return the normal view
+        return view('search.basicsearch', compact('searchResults'));
     }
 }

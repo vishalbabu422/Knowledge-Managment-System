@@ -27,9 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/Download/{filename}', [FileController::class, 'download'])->name('File.download');
 
     Route::get('/Directory', [DirectoryController::class, 'index'])->name('directory.index');
-
+    
     Route::get('/Search/Listings', [SearchController::class, 'autoComplete'])->name('search.autocomplete');
-    Route::post('/Search/basicSearch', [SearchController::class, 'basicSearch'])->name('search.search');
+    Route::match(['get', 'post'],'/Search/basicSearch', [SearchController::class, 'basicSearch'])->name('search.search');
 });
 
 require __DIR__ . '/auth.php';

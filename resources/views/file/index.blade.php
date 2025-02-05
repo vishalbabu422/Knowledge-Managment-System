@@ -46,7 +46,7 @@
 
                     <div class="row mt-4">
                         <div class="col-1">
-                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
                         </div>
                         <div class="col-1">
                             <button class="btn btn-light btn-lg" type="reset" id="reset-button">Reset</button>
@@ -104,21 +104,7 @@
         $('#reset-button').click(function () {
             $('#file-upload-form').validate().resetForm();
         });
-
-
-        @if (session('success'))
-            toastr.success("{{ session('success') }}", "Success", {
-                closeButton: true,
-                progressBar: true,
-                timeOut: 5000 // Time in milliseconds (5 seconds)
-            });
-        @elseif(session('error'))
-        toastr.error("{{ session('error') }}", "Error", {
-            closeButton: true,
-            progressBar: true,
-            timeOut: 5000 // Time in milliseconds (5 seconds)
-        });
-        @endif
+        
     </script>
     
     <!--File Upload Scripts Ends-->

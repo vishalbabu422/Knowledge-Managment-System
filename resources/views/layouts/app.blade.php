@@ -9,22 +9,19 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css', 'resources/css/vertical-layout-light/style.css',
-    'resources/css/mdi/css/materialdesignicons.min.css', 'resources/css/toastr.min.css',
-    'resources/css/dataTables.dataTables.min.css', 'resources/css/bootstrap.min.css', 'resources/css/search-main.css',
-    'resources/css/jquery-ui.min.css'])
+    @vite(['resources/css/feather/feather.css', 'resources/css/vertical-layout-light/style.css', 'resources/css/mdi/css/materialdesignicons.min.css', 'resources/css/bootstrap.min.css', 'resources/css/toastr.min.css', 'resources/css/dataTables.dataTables.min.css', 'resources/css/search-main.css', 'resources/css/jquery-ui.min.css'])
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ Vite::asset('resources/images/search.png') }}" />
 
     <script src="{{ Vite::asset('resources/js/jquery.min.js') }}"></script>
+    <script src="{{ Vite::asset('resources/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/vendor.bundle.base.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/template.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/dashboard.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/jquery.validate.min.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/toastr.min.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/dataTables.min.js') }}"></script>
-    <script src="{{ Vite::asset('resources/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ Vite::asset('resources/js/jquery-ui.min.js') }}"></script>
 </head>
 
@@ -68,21 +65,37 @@
     <!-- container-scroller -->
 </body>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
+
+        @if (session('success'))
+            toastr.success("{{ session('success') }}", "Success", {
+                closeButton: true,
+                progressBar: true,
+                timeOut: 5000 // Time in milliseconds (5 seconds)
+            });
+        @elseif (session('error'))
+            toastr.error("{{ session('error') }}", "Error", {
+                closeButton: true,
+                progressBar: true,
+                timeOut: 5000 // Time in milliseconds (5 seconds)
+            });
+        @endif
+
+
         // Initialize DataTables
         $('.table').DataTable();
 
         // Autocomplete setup
         $('#search').autocomplete({
-            source: function (request, response) {
+            source: function(request, response) {
                 $.ajax({
                     url: "{{ route('search.autocomplete') }}", // Adjust the route as per your requirement
                     data: {
                         term: request.term // Send search term to server
                     },
-                    success: function (data) {
+                    success: function(data) {
                         // Populate autocomplete suggestions
-                        response($.map(data, function (item) {
+                        response($.map(data, function(item) {
                             return {
                                 label: item
                                     .title, // Display text in the autocomplete dropdown
@@ -97,30 +110,54 @@
         });
 
         // Handle form submission on Enter key press
-        $('#search').on('keydown', function (event) {
+        $('#search').on('keydown', function(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
+                if ($('#search').val().length > 0) {
+                    $.ajax({
+                        url: "{{ route('search.search') }}", // Replace with the route to handle the selected item
+                        method: 'POST',
+                        data: {
+                            term: $('#search').val(),
+                            _token: '{{ csrf_token() }}' // CSRF token for security in Laravel
+                        },
+                        success: function(response) {
+                            $('#container').html(response);
+                        },
+                        error: function(error) {
+                            console.error("Error:", error);
+                        }
+                    });
+                } else {
+                    toastr.error("Please enter document title for search!", "Error", {
+                        closeButton: true,
+                        progressBar: true,
+                        timeOut: 5000
+                    });
+                }
+            }
 
-                $.ajax({
-                    url: "{{ route('search.search') }}", // Replace with the route to handle the selected item
-                    method: 'POST',
-                    data: {
-                        term: $('#search').val(),
-                        _token: '{{ csrf_token() }}' // CSRF token for security in Laravel
-                    },
-                    success: function (response) {
-                        console.log("Item selected:", response);
-                        $('#container').html(response)
-                    },
-                    error: function (error) {
-                        console.error("Error:", error);
-                    }
-                });
+        });
+    });
+
+    $(document).on('click', '.pagination a', function(e) {
+        e.preventDefault(); // Prevent default behavior of pagination
+        var url = $(this).attr('href');
+        var term = $('#search').val(); 
+
+        // Make an AJAX request to fetch the next page
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                term: term, // Pass the search term in the request,
+                _token: '{{ csrf_token() }}' // CSRF token for security in Laravel
+            },
+            success: function(response) {
+                $('#container').html(response);
             }
         });
     });
 </script>
-
-
 
 </html>
