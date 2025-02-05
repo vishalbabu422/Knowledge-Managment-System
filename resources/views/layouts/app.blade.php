@@ -9,7 +9,10 @@
     <title>{{ config('app.name', 'KMS') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/feather/feather.css', 'resources/css/vertical-layout-light/style.css', 'resources/css/mdi/css/materialdesignicons.min.css', 'resources/css/toastr.min.css', 'resources/css/dataTables.dataTables.min.css', 'resources/css/bootstrap.min.css', 'resources/css/search-main.css', 'resources/css/jquery-ui.min.css'])
+    @vite(['resources/css/feather/feather.css', 'resources/css/vertical-layout-light/style.css',
+    'resources/css/mdi/css/materialdesignicons.min.css', 'resources/css/toastr.min.css',
+    'resources/css/dataTables.dataTables.min.css', 'resources/css/bootstrap.min.css', 'resources/css/search-main.css',
+    'resources/css/jquery-ui.min.css'])
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ Vite::asset('resources/images/search.png') }}" />
@@ -65,21 +68,21 @@
     <!-- container-scroller -->
 </body>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Initialize DataTables
         $('.table').DataTable();
 
         // Autocomplete setup
         $('#search').autocomplete({
-            source: function(request, response) {
+            source: function (request, response) {
                 $.ajax({
-                    url: '{{ route('search.autocomplete') }}', // Adjust the route as per your requirement
+                    url: "{{ route('search.autocomplete') }}", // Adjust the route as per your requirement
                     data: {
                         term: request.term // Send search term to server
                     },
-                    success: function(data) {
+                    success: function (data) {
                         // Populate autocomplete suggestions
-                        response($.map(data, function(item) {
+                        response($.map(data, function (item) {
                             return {
                                 label: item
                                     .title, // Display text in the autocomplete dropdown
@@ -94,23 +97,23 @@
         });
 
         // Handle form submission on Enter key press
-        $('#search').on('keydown', function(event) {
+        $('#search').on('keydown', function (event) {
             if (event.key === 'Enter') {
                 console.log(event.key)
                 event.preventDefault();
-                
+
                 $.ajax({
-                    url: '{{ route('search.selectedItem') }}', // Replace with the route to handle the selected item
+                    url: "{{ route('search.search') }}", // Replace with the route to handle the selected item
                     method: 'POST',
                     data: {
                         item: selectedItem,
                         _token: '{{ csrf_token() }}' // CSRF token for security in Laravel
                     },
-                    success: function(response) {
+                    success: function (response) {
                         console.log("Item selected:", response);
                         alert('Selected item: ' + response.message);
                     },
-                    error: function(error) {
+                    error: function (error) {
                         console.error("Error:", error);
                     }
                 });

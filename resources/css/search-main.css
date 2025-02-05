@@ -821,8 +821,6 @@ legend {
     -ms-flex-pack: center;
     -ms-flex-align: center;
     font-family: "Roboto", sans-serif;
-    padding-left: 70px;
-    padding-top: 25px;
 }
 
 .s007 form {
@@ -919,8 +917,10 @@ legend {
 .s007 form .inner-form .basic-search {
     margin-bottom: 5px;
     box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    width: 165%;
-    margin-left: 71px;
+    width: 100%;
+    margin-left: 0;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .s007 form .inner-form .basic-search .input-field {
@@ -930,6 +930,7 @@ legend {
 .s007 form .inner-form .basic-search .input-field input {
     padding: 10px 110px 10px 70px;
 }
+
 
 .s007 form .inner-form .basic-search .input-field .icon-wrap {
     position: absolute;
@@ -1029,12 +1030,7 @@ legend {
     font-size: 14px;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices__inner
-    .choices__list.choices__list--single {
+.s007 form .inner-form .advance-search .choices__inner .choices__list.choices__list--single {
     display: -ms-flexbox;
     display: flex;
     padding: 0;
@@ -1044,12 +1040,7 @@ legend {
     padding-top: 10px;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices__inner
-    .choices__item.choices__item--selectable.choices__placeholder {
+.s007 form .inner-form .advance-search .choices__inner .choices__item.choices__item--selectable.choices__placeholder {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -1059,13 +1050,7 @@ legend {
     color: #888;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices__inner
-    .choices__list--single
-    .choices__item {
+.s007 form .inner-form .advance-search .choices__inner .choices__list--single .choices__item {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -1083,21 +1068,11 @@ legend {
     box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices__list.choices__list--dropdown
-    .choices__item--selectable {
+.s007 form .inner-form .advance-search .choices__list.choices__list--dropdown .choices__item--selectable {
     padding-right: 0;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices__list--dropdown
-    .choices__item--selectable.is-highlighted {
+.s007 form .inner-form .advance-search .choices__list--dropdown .choices__item--selectable.is-highlighted {
     background: #fff;
     color: #57b846;
 }
@@ -1122,12 +1097,7 @@ legend {
     background-repeat: no-repeat;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices[data-type*="select-one"]
-    .choices__button {
+.s007 form .inner-form .advance-search .choices[data-type*="select-one"] .choices__button {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%2357b846' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3e%3c/svg%3e");
     background-size: 16px 16px;
     background-position: right center;
@@ -1141,37 +1111,19 @@ legend {
     margin: 0;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices[data-type*="select-one"].valid
-    .choices__button {
+.s007 form .inner-form .advance-search .choices[data-type*="select-one"].valid .choices__button {
     display: block;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices[data-type*="select-one"].valid
-    .choices__button:hover {
+.s007 form .inner-form .advance-search .choices[data-type*="select-one"].valid .choices__button:hover {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23ccc' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3e%3c/svg%3e");
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices[data-type*="select-one"].valid:after {
+.s007 form .inner-form .advance-search .choices[data-type*="select-one"].valid:after {
     display: none;
 }
 
-.s007
-    form
-    .inner-form
-    .advance-search
-    .choices[data-type*="select-one"].is-open:after {
+.s007 form .inner-form .advance-search .choices[data-type*="select-one"].is-open:after {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z'/%3e%3c/svg%3e");
 }
 
@@ -1204,13 +1156,14 @@ legend {
 .search-input {
     height: 50px !important;
     border-radius: 25px !important;
-    z-index: 1 !important ;
+    z-index: 1 !important;
 }
 
 .ui-autocomplete {
-    width: 720px !important;
+    width: calc(100% - 75%) !important;
+    /* Ensure spaces around the operator */
     z-index: 9999 !important;
     position: absolute !important;
-    top: 88px !important;
-    left: 689.523px !important;
+    top: 78px !important;
+    left: calc(100% - 50%) !important
 }

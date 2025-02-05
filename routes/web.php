@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/Directory', [DirectoryController::class, 'index'])->name('directory.index');
 
     Route::get('/Search/Listings', [SearchController::class, 'autoComplete'])->name('search.autocomplete');
+    Route::get('/Search/basicSearch', [SearchController::class, 'basicSearch'])->name('search.search');
 });
 
 require __DIR__ . '/auth.php';

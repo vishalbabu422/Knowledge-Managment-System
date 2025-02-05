@@ -1,6 +1,7 @@
 @props(['name','notification_count' => 2,'email'])
 
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+<nav
+    class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -9,7 +10,7 @@
         </div>
 
     </div>
-    <div class="navbar-menu-wrapper d-flex align-items-top">
+    <div class="navbar-menu-wrapper d-flex align-items-top justify-content-between">
         @if ($name)
         <ul class="navbar-nav">
             <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
@@ -23,7 +24,7 @@
                 <x-search-bar />
             </li>
         </ul>
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav me-0">
 
 
             <li class="nav-item dropdown">
