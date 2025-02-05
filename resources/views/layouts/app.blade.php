@@ -47,7 +47,7 @@
                                 <div class="tab-content tab-content-basic">
                                     <div class="tab-pane fade show active" id="overview" role="tabpanel"
                                         aria-labelledby="overview">
-                                        <div class="row">
+                                        <div class="row" id="container">
                                             {{ $slot }}
                                         </div>
                                     </div>
@@ -99,19 +99,18 @@
         // Handle form submission on Enter key press
         $('#search').on('keydown', function (event) {
             if (event.key === 'Enter') {
-                console.log(event.key)
                 event.preventDefault();
 
                 $.ajax({
                     url: "{{ route('search.search') }}", // Replace with the route to handle the selected item
                     method: 'POST',
                     data: {
-                        item: selectedItem,
+                        term: $('#search').val(),
                         _token: '{{ csrf_token() }}' // CSRF token for security in Laravel
                     },
                     success: function (response) {
                         console.log("Item selected:", response);
-                        alert('Selected item: ' + response.message);
+                        $('#container').html(response)
                     },
                     error: function (error) {
                         console.error("Error:", error);

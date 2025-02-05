@@ -19,7 +19,14 @@ class SearchController extends Controller
         return response()->json($results);
     }
 
-    public function basicSearch(Request $request){
-        print_r($request);die;
+    public function basicSearch(Request $request)
+    {
+        $item = $request->input('item');
+
+        $searchResults = ContentCatalogue::where('title', 'like', '%' . $item . '%')->get();
+
+        $view = view('search.basicsearch', compact('searchResults'))->render();
+
+        return response()->json($view); 
     }
 }

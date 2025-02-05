@@ -921,6 +921,7 @@ legend {
     margin-left: 0;
     max-width: 600px;
     margin: 0 auto;
+    margin-right: 30px;
 }
 
 .s007 form .inner-form .basic-search .input-field {
@@ -1166,4 +1167,14 @@ legend {
     position: absolute !important;
     top: 78px !important;
     left: calc(100% - 50%) !important
+}
+
+.search-file-icon {
+    height: 80px;
+    object-fit: fit;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    text-align: center;
 }
